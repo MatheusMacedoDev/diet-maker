@@ -26,6 +26,9 @@ public class UserService {
                 request.email(),
                 passwordHash,
                 passwordSalt,
+                request.birthDate(),
+                request.gender(),
+                request.height(),
                 request.weight(),
                 request.activityLevelCoefficient());
 

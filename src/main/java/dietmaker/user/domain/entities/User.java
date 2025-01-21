@@ -1,7 +1,9 @@
 package dietmaker.user.domain.entities;
 
+import java.util.Date;
 import java.util.UUID;
 
+import dietmaker.user.domain.enums.Gender;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +35,16 @@ public class User {
     @Column(name = "password_salt")
     private byte[] passwordSalt;
 
-    @Column(name = "weight")
+    @Column(name = "birth_date")
+    private Date birthDate;
+
+    @Column(name = "gender")
+    private Gender gender;
+
+    @Column(name = "height_cm")
+    private Double height;
+
+    @Column(name = "weight_kg")
     private Double weight;
 
     @Column(name = "basal_metabolic_rate")
@@ -42,11 +53,16 @@ public class User {
     @Column(name = "activity_level_coefficient")
     private Double activityLevelCoefficient;
 
-    public User(String userName, String email, byte[] passwordHash, byte[] passwordSalt, Double weight,
+    public User(String userName, String email, byte[] passwordHash, byte[] passwordSalt, Date birthDate, Gender gender,
+            Double height,
+            Double weight,
             Double activityLevelCoefficient) {
         this.userName = userName;
         this.email = email;
 
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.height = height;
         this.weight = weight;
         this.activityLevelCoefficient = activityLevelCoefficient;
         this.basalMetabolicRate = 0.0;
