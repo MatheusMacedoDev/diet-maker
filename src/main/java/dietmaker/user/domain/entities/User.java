@@ -2,6 +2,7 @@ package dietmaker.user.domain.entities;
 
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import dietmaker.user.domain.enums.Gender;
 import jakarta.persistence.Column;
@@ -57,6 +58,7 @@ public class User {
             Double height,
             Double weight,
             Double activityLevelCoefficient) {
+
         this.userName = userName;
         this.email = email;
 
@@ -64,10 +66,35 @@ public class User {
         this.gender = gender;
         this.height = height;
         this.weight = weight;
+
+        this.basalMetabolicRate = calculateBasalMetabolicRate();
         this.activityLevelCoefficient = activityLevelCoefficient;
-        this.basalMetabolicRate = 0.0;
 
         this.passwordHash = passwordHash;
         this.passwordSalt = passwordSalt;
+    }
+
+    private int calculateAge() {
+        Date currentDate = new Date();
+
+        long diffInMillies = Math.abs(birthDate.getTime() - currentDate.getTime());
+        int diffInYears = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 365;
+
+        return diffInYears;
+    }
+
+    private Double calculateBasalMetabolicRate() {
+        if (gender == Gender.Male)
+            return calculateBasalMetabolicRateForMale();
+
+        return calculateBasalMetabolicRateForFemale();
+    }
+
+    private Double calculateBasalMetabolicRateForMale() {
+        return 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * calculateAge());
+    }
+
+    private Double calculateBasalMetabolicRateForFemale() {
+        return 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * calculateAge());
     }
 }
