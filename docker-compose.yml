@@ -1,0 +1,35 @@
+name: diet-maker
+
+services:
+  diet-maker-db:
+    image: postgres:16.1
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: T0rt4d3l1m40
+    volumes:
+      - "diet-maker-db-vulume:/dev/shm"
+    networks:
+      diet-maker-network:
+        aliases:
+          - "sql"
+
+  diet-maker-pgadmin:
+    image: dpage/pgadmin4:8.1
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "matheus@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "T0rt4d3l1m40"
+    ports:
+      - "15432:80"
+    depends_on:
+      - diet-maker-db
+    networks:
+      - diet-maker-network
+
+volumes:
+  diet-maker-db-vulume:
+
+networks:
+  diet-maker-network:
+    driver: bridge
