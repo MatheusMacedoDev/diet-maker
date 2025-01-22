@@ -4,6 +4,7 @@ CREATE TABLE users (
     email VARCHAR NOT NULL,
     password_hash BYTEA NOT NULL,
     password_salt BYTEA NOT NULL,
+    role NUMERIC(1, 0) NOT NULL,
     birth_date DATE NOT NULL,
     gender NUMERIC(1, 0) NOT NULL,
     height_cm NUMERIC(4,1) NOT NULL,

@@ -5,6 +5,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import dietmaker.user.domain.enums.Gender;
+import dietmaker.user.domain.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +37,9 @@ public class User {
     @Column(name = "password_salt")
     private byte[] passwordSalt;
 
+    @Column(name = "role")
+    private Role role;
+
     @Column(name = "birth_date")
     private Date birthDate;
 
@@ -61,6 +65,8 @@ public class User {
 
         this.userName = userName;
         this.email = email;
+
+        this.role = Role.COMMON;
 
         this.birthDate = birthDate;
         this.gender = gender;
