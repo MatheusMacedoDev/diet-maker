@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dietmaker.user.application.contracts.requests.LoginRequestDTO;
 import dietmaker.user.application.contracts.requests.UserRequestDTO;
+import dietmaker.user.application.exceptions.InvalidLoginException;
 import dietmaker.user.domain.entities.User;
 import dietmaker.user.domain.repositories.UserRepository;
 import dietmaker.user.infra.security.TokenService;
@@ -46,13 +47,13 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findByEmail(loginRequest.email());
 
         if (!optionalUser.isPresent())
-            return "No user with this email founded!";
+            throw new InvalidLoginException();
 
         User user = optionalUser.get();
 
         if (!cryptographyStrategy.passwordMatches(loginRequest.password(), user.getPasswordSalt(),
                 user.getPasswordHash()))
-            return "Password doesn't match";
+            throw new InvalidLoginException();
 
         return tokenService.generateToken(user);
     }
