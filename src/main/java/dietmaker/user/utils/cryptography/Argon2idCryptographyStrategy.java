@@ -2,6 +2,7 @@ package dietmaker.user.utils.cryptography;
 
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
 import org.bouncycastle.crypto.params.Argon2Parameters;
@@ -42,5 +43,11 @@ public class Argon2idCryptographyStrategy implements CryptographyStrategy {
         argonGenerator.generateBytes(passwordText.getBytes(StandardCharsets.UTF_8), hashedPassword);
 
         return hashedPassword;
+    }
+
+    @Override
+    public boolean passwordMatches(String passwordText, byte[] passwordSalt, byte[] passwordHash) {
+        byte[] hashedTestPassword = hashPassword(passwordText, passwordSalt);
+        return Arrays.equals(passwordHash, hashedTestPassword);
     }
 }

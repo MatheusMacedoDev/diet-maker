@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import dietmaker.user.application.contracts.requests.LoginRequestDTO;
 import dietmaker.user.application.contracts.requests.UserRequestDTO;
 import dietmaker.user.application.services.UserService;
 
@@ -22,5 +23,12 @@ public class UserController {
         userService.createUser(userRequestDTO);
 
         return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequestDTO) {
+        String token = userService.login(loginRequestDTO);
+
+        return ResponseEntity.ok(token);
     }
 }
