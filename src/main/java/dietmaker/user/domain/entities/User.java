@@ -84,7 +84,7 @@ public class User {
     }
 
     private Double calculateBasalMetabolicRate() {
-        if (gender == Gender.Male)
+        if (gender == Gender.MALE)
             return calculateBasalMetabolicRateForMale();
 
         return calculateBasalMetabolicRateForFemale();
