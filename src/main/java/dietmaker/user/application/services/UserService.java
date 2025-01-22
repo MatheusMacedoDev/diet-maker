@@ -9,6 +9,7 @@ import dietmaker.user.application.contracts.requests.LoginRequestDTO;
 import dietmaker.user.application.contracts.requests.UserRequestDTO;
 import dietmaker.user.domain.entities.User;
 import dietmaker.user.domain.repositories.UserRepository;
+import dietmaker.user.infra.security.TokenService;
 import dietmaker.user.utils.cryptography.CryptographyStrategy;
 
 @Service
@@ -16,6 +17,9 @@ public class UserService {
 
     @Autowired
     private CryptographyStrategy cryptographyStrategy;
+
+    @Autowired
+    private TokenService tokenService;
 
     @Autowired
     private UserRepository userRepository;
@@ -50,6 +54,6 @@ public class UserService {
                 user.getPasswordHash()))
             return "Password doesn't match";
 
-        return "You are logged in";
+        return tokenService.generateToken(user);
     }
 }
