@@ -11,7 +11,7 @@ import dietmaker.user.application.exceptions.InvalidLoginException;
 import dietmaker.user.domain.entities.User;
 import dietmaker.user.domain.repositories.UserRepository;
 import dietmaker.user.infra.security.TokenService;
-import dietmaker.user.utils.cryptography.CryptographyStrategy;
+import dietmaker.user.infra.security.cryptography.CryptographyStrategy;
 
 @Service
 public class UserService {

@@ -1,4 +1,4 @@
-package dietmaker.user.utils.cryptography;
+package dietmaker.user.infra.security.cryptography;
 
 public interface CryptographyStrategy {
     byte[] generateSalt();
