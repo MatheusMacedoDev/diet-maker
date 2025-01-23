@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dietmaker.user.application.contracts.requests.LoginRequestDTO;
 import dietmaker.user.application.contracts.requests.UserRequestDTO;
 import dietmaker.user.application.services.UserService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("users")
@@ -19,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody UserRequestDTO userRequestDTO) {
+    public ResponseEntity<Void> createUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         userService.createUser(userRequestDTO);
 
         return ResponseEntity.status(201).build();
