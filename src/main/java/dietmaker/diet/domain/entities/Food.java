@@ -1,7 +1,11 @@
 package dietmaker.diet.domain.entities;
 
 import dietmaker.diet.application.contracts.requests.FoodRequestDTO;
+import dietmaker.diet.domain.valueobjects.Macronutrients;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,25 +28,21 @@ public class Food {
     @Column(name = "food_name")
     private String foodName;
 
-    @Column(name = "food_carbohydrates")
-    private double foodCarbohydrates;
-
-    @Column(name = "food_protein")
-    private double foodProtein;
-
-    @Column(name = "food_lipids")
-    private double foodLipids;
-
-    @Column(name = "food_kcal")
-    private double foodKcal;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "carbohydrates", column = @Column(name = "food_carbohydrates")),
+            @AttributeOverride(name = "protein", column = @Column(name = "food_protein")),
+            @AttributeOverride(name = "lipids", column = @Column(name = "food_lipids")),
+            @AttributeOverride(name = "kcal", column = @Column(name = "food_kcal"))
+    })
+    private Macronutrients macronutrients;
 
     public Food(FoodRequestDTO request) {
         this.foodName = request.name();
 
-        this.foodCarbohydrates = request.carbohydrates();
-        this.foodProtein = request.protein();
-        this.foodLipids = request.lipids();
-
-        this.foodKcal = foodCarbohydrates * 4 + foodProtein * 4 + foodLipids * 9;
+        this.macronutrients = new Macronutrients(
+                request.carbohydrates(),
+                request.protein(),
+                request.lipids());
     }
 }
