@@ -20,5 +20,10 @@ public abstract class ValueObject {
         return Objects.hash(getEqualityComponents());
     }
 
+    @Override
+    public String toString() {
+        return getEqualityComponents().toString();
+    }
+
     protected abstract Object getEqualityComponents();
 }
