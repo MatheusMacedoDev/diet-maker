@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
@@ -58,7 +59,13 @@ public class User {
     @Column(name = "activity_level_coefficient")
     private Double activityLevelCoefficient;
 
-    public User(String userName, String email, byte[] passwordHash, byte[] passwordSalt, Date birthDate, Gender gender,
+    public User(
+            String userName,
+            String email,
+            byte[] passwordHash,
+            byte[] passwordSalt,
+            Date birthDate,
+            Gender gender,
             Double height,
             Double weight,
             Double activityLevelCoefficient) {
