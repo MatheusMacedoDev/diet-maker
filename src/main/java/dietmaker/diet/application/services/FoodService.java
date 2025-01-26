@@ -1,5 +1,7 @@
 package dietmaker.diet.application.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,9 @@ public class FoodService {
     public void createFood(FoodRequestDTO request) {
         Food food = new Food(request);
         foodRepository.save(food);
+    }
+
+    public List<Food> findFoodsByName(String name) {
+        return foodRepository.findAllFoodsByNameSimilarity(name);
     }
 }
