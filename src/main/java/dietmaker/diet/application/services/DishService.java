@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dietmaker.diet.application.contracts.requests.DishRequestDTO;
+import dietmaker.diet.application.contracts.responses.DishDTO;
 import dietmaker.diet.application.exceptions.FoodNotFoundException;
 import dietmaker.diet.domain.entities.Dish;
 import dietmaker.diet.domain.entities.DishFood;
@@ -66,5 +67,12 @@ public class DishService {
 
         dishRepository.save(dish);
         dishFoodRepository.saveAll(dishFoods);
+    }
+
+    public List<DishDTO> findDishesByName(String name) {
+        List<Dish> unmappedDishes = dishRepository.findAllDishesByNameSimilarity(name);
+        List<DishDTO> mappedDishes = unmappedDishes.stream().map(DishDTO::new).toList();
+
+        return mappedDishes;
     }
 }
