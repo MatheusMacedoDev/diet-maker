@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "dishes")
+@Table(name = "dish_foods")
 @NoArgsConstructor
 @Getter
 public class DishFood {
@@ -32,4 +32,10 @@ public class DishFood {
 
     @Column(name = "grams_quantity")
     private short gramsQuantity;
+
+    public DishFood(Dish dish, Food food, short gramsQuantity) {
+        this.dish = dish;
+        this.food = food;
+        this.gramsQuantity = gramsQuantity;
+    }
 }

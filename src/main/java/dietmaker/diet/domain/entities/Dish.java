@@ -1,5 +1,7 @@
 package dietmaker.diet.domain.entities;
 
+import java.util.List;
+
 import dietmaker.diet.domain.valueobjects.Macronutrients;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
@@ -9,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +27,9 @@ public class Dish {
     @Column(name = "dish_id")
     private short dishId;
 
+    @OneToMany(mappedBy = "foodId")
+    private List<Food> dishFoods;
+
     @Column(name = "dish_name")
     private String dishName;
 
@@ -35,4 +41,13 @@ public class Dish {
         @AttributeOverride(name = "kcal", column = @Column(name = "dish_kcal"))
     })
     private Macronutrients macronutrients;
+
+    public Dish(String dishName) {
+        this.dishName = dishName;
+        this.macronutrients = new Macronutrients(0, 0, 0);
+    }
+
+    public void setMacronutrients(Macronutrients macronutrients) {
+        this.macronutrients = macronutrients;
+    }
 }

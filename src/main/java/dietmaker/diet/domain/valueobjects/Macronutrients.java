@@ -1,11 +1,13 @@
 package dietmaker.diet.domain.valueobjects;
 
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import util.ValueObject;
 
 @Embeddable
 @NoArgsConstructor
+@Getter
 public class Macronutrients extends ValueObject {
 
     private double carbohydrates;
