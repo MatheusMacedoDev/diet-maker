@@ -1,9 +1,11 @@
 package dietmaker.user.domain.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import dietmaker.diet.domain.entities.Diet;
 import dietmaker.user.domain.enums.Gender;
 import dietmaker.user.domain.enums.Role;
 import jakarta.persistence.Column;
@@ -11,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +28,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
     private UUID userId;
+
+    @OneToMany(mappedBy = "dietId")
+    private List<Diet> userDiets;
 
     @Column(name = "user_name")
     private String userName;
@@ -60,15 +66,15 @@ public class User {
     private Double activityLevelCoefficient;
 
     public User(
-            String userName,
-            String email,
-            byte[] passwordHash,
-            byte[] passwordSalt,
-            Date birthDate,
-            Gender gender,
-            Double height,
-            Double weight,
-            Double activityLevelCoefficient) {
+        String userName,
+        String email,
+        byte[] passwordHash,
+        byte[] passwordSalt,
+        Date birthDate,
+        Gender gender,
+        Double height,
+        Double weight,
+        Double activityLevelCoefficient) {
 
         this.userName = userName;
         this.email = email;
