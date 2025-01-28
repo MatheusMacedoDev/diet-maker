@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import dietmaker.diet.application.exceptions.DishNotFoundException;
 import dietmaker.diet.application.exceptions.FoodNotFoundException;
+import dietmaker.user.application.exceptions.UserNotFoundException;
 
 @ControllerAdvice
 public class DietRestExceptionHandler extends ResponseEntityExceptionHandler {
@@ -34,8 +36,18 @@ public class DietRestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(FoodNotFoundException.class)
-    private ResponseEntity<ExceptionMessage> handleInvalidLoginException(FoodNotFoundException exception) {
+    private ResponseEntity<ExceptionMessage> handleFoodNotFoundException(FoodNotFoundException exception) {
         return handleRuntimeException(exception, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DishNotFoundException.class)
+    private ResponseEntity<ExceptionMessage> handleDishNotFoundException(DishNotFoundException exception) {
+        return handleRuntimeException(exception, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    private ResponseEntity<ExceptionMessage> handleUserNotFoundException(UserNotFoundException exception) {
+        return handleRuntimeException(exception, HttpStatus.NOT_FOUND);
     }
 
     private ResponseEntity<ExceptionMessage> handleRuntimeException(RuntimeException exception, HttpStatus status) {

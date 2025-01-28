@@ -44,4 +44,14 @@ public class Diet {
         @AttributeOverride(name = "kcal", column = @Column(name = "diet_kcal"))
     })
     private Macronutrients macronutrients;
+
+    public Diet(String dietName, User user) {
+        this.dietName = dietName;
+        this.user = user;
+        this.macronutrients = new Macronutrients(0, 0, 0);
+    }
+
+    public void setMacronutrients(Macronutrients macronutrients) {
+        this.macronutrients = macronutrients;
+    }
 }
