@@ -34,3 +34,5 @@ build/
 
 ### Env File ###
 .env
+
+.webui_secret_key

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import dietmaker.diet.application.contracts.requests.DietRequestDTO;
 import dietmaker.diet.application.contracts.requests.DishDTO;
 import dietmaker.diet.application.contracts.requests.FoodDTO;
+import dietmaker.diet.application.contracts.responses.DietDTO;
 import dietmaker.diet.application.exceptions.DishNotFoundException;
 import dietmaker.diet.application.exceptions.FoodNotFoundException;
 import dietmaker.diet.domain.entities.Diet;
@@ -124,5 +125,14 @@ public class DietService {
         }
 
         return dietDishes;
+    }
+
+    public List<DietDTO> listDietsByUserId(UUID userId) {
+        User user = getUserById(userId);
+
+        List<Diet> unmappedUserDiets = dietRepository.findAllByUser(user);
+        List<DietDTO> mappedUserDiets = unmappedUserDiets.stream().map(DietDTO::new).toList();
+
+        return mappedUserDiets;
     }
 }
