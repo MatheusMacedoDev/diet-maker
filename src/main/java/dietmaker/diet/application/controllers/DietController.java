@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dietmaker.diet.application.contracts.requests.DietRequestDTO;
 import dietmaker.diet.application.contracts.responses.DietDTO;
+import dietmaker.diet.application.contracts.responses.FullDietDTO;
 import dietmaker.diet.application.services.DietService;
 
 @RestController
@@ -28,6 +29,13 @@ public class DietController {
         dietService.createDiet(dietRequestDTO);
 
         return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping("/{dietId}")
+    public ResponseEntity<FullDietDTO> getDietById(@RequestParam UUID dietId) {
+        FullDietDTO diet = dietService.getDietById(dietId);
+
+        return ResponseEntity.ok(diet);
     }
 
     @GetMapping("users/{userId}")

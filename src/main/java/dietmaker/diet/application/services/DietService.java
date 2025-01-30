@@ -9,9 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dietmaker.diet.application.contracts.requests.DietRequestDTO;
-import dietmaker.diet.application.contracts.requests.DishDTO;
-import dietmaker.diet.application.contracts.requests.FoodDTO;
+import dietmaker.diet.application.contracts.requests.PostDishDTO;
+import dietmaker.diet.application.contracts.requests.PostFoodDTO;
 import dietmaker.diet.application.contracts.responses.DietDTO;
+import dietmaker.diet.application.contracts.responses.DietDishDTO;
+import dietmaker.diet.application.contracts.responses.DietFoodDTO;
+import dietmaker.diet.application.contracts.responses.DishDTO;
+import dietmaker.diet.application.contracts.responses.FullDietDTO;
+import dietmaker.diet.application.exceptions.DietNotFoundException;
 import dietmaker.diet.application.exceptions.DishNotFoundException;
 import dietmaker.diet.application.exceptions.FoodNotFoundException;
 import dietmaker.diet.domain.entities.Diet;
@@ -77,7 +82,7 @@ public class DietService {
         return userOptional.get();
     }
 
-    private List<DietFood> mapDietFoods(FoodDTO[] foodDTOs, Diet diet) {
+    private List<DietFood> mapDietFoods(PostFoodDTO[] foodDTOs, Diet diet) {
         List<DietFood> dietFoods = new ArrayList<DietFood>();
 
         byte dietFoodsQuantity = (byte) foodDTOs.length;
@@ -102,7 +107,7 @@ public class DietService {
         return dietFoods;
     }
 
-    private List<DietDish> mapDietDishes(DishDTO[] dishDTOs, Diet diet) {
+    private List<DietDish> mapDietDishes(PostDishDTO[] dishDTOs, Diet diet) {
         List<DietDish> dietDishes = new ArrayList<DietDish>();
 
         byte dietDishesQuantity = (byte) dishDTOs.length;
@@ -134,5 +139,30 @@ public class DietService {
         List<DietDTO> mappedUserDiets = unmappedUserDiets.stream().map(DietDTO::new).toList();
 
         return mappedUserDiets;
+    }
+
+    public FullDietDTO getDietById(UUID dietId) {
+        Optional<Diet> dietOptional = dietRepository.findById(dietId);
+
+        if (!dietOptional.isPresent())
+            throw new DietNotFoundException();
+
+        Diet diet = dietOptional.get();
+
+        List<DietDish> unmappedDishes = dietDishRepository.findAllByDiet(diet);
+        List<DietDishDTO> dishes = unmappedDishes
+            .stream()
+            .map(DietDishDTO::new)
+            .toList();
+
+        List<DietFood> unmappedFoods = dietFoodRepository.findAllByDiet(diet);
+        List<DietFoodDTO> foods = unmappedFoods
+            .stream()
+            .map(DietFoodDTO::new)
+            .toList();
+
+        FullDietDTO mappedDiet = new FullDietDTO(diet, dishes, foods);
+
+        return mappedDiet;
     }
 }
