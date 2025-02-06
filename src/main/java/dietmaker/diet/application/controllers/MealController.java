@@ -23,19 +23,4 @@ public class MealController {
 
         return ResponseEntity.status(201).build();
     }
-
-    // @GetMapping("/{dietId}")
-    // public ResponseEntity<FullDietDTO> getDietById(@RequestParam UUID dietId) {
-    // FullDietDTO diet = dietService.getDietById(dietId);
-    //
-    // return ResponseEntity.ok(diet);
-    // }
-
-    // @GetMapping("users/{userId}")
-    // public ResponseEntity<List<DietDTO>> listDietsByUserId(@RequestParam UUID
-    // userId) {
-    // List<DietDTO> diets = dietService.listDietsByUserId(userId);
-    //
-    // return ResponseEntity.ok(diets);
-    // }
 }

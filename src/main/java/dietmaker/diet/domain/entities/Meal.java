@@ -1,6 +1,7 @@
 package dietmaker.diet.domain.entities;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
 import dietmaker.diet.domain.valueobjects.Macronutrients;
@@ -14,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,6 +49,12 @@ public class Meal {
 
     @Column(name = "meal_time")
     private LocalTime mealTime;
+
+    @OneToMany(mappedBy = "mealFoodId")
+    private List<MealFood> mealFoods;
+
+    @OneToMany(mappedBy = "mealDishId")
+    private List<MealDish> mealDishes;
 
     public Meal(String mealName, Diet diet) {
         this.mealName = mealName;

@@ -40,7 +40,7 @@ public class Macronutrients extends ValueObject {
         return new Object[] { carbohydrates, protein, lipids, kcal };
     }
 
-    public static Macronutrients calculateDietMacronutrients(List<MealFood> foods, List<MealDish> dishes) {
+    public static Macronutrients calculateMealMacronutrients(List<MealFood> foods, List<MealDish> dishes) {
         short carbohydrates = 0;
         short protein = 0;
         short lipids = 0;
@@ -60,4 +60,10 @@ public class Macronutrients extends ValueObject {
         return new Macronutrients(carbohydrates, protein, lipids);
     }
 
+    public Macronutrients plus(Macronutrients other) {
+        return new Macronutrients(
+            carbohydrates + other.carbohydrates,
+            protein + other.protein,
+            lipids + other.lipids);
+    }
 }

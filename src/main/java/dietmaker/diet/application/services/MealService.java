@@ -59,22 +59,17 @@ public class MealService {
         List<MealFood> mealFoods = mapDietFoods(mealRequest.mealFoods(), meal);
         List<MealDish> mealDishes = mapDietDishes(mealRequest.mealDishes(), meal);
 
-        Macronutrients mealMacronutrients = Macronutrients.calculateDietMacronutrients(mealFoods, mealDishes);
+        Macronutrients mealMacronutrients = Macronutrients.calculateMealMacronutrients(mealFoods, mealDishes);
         meal.setMacronutrients(mealMacronutrients);
+
+        diet.setMacronutrients(
+            diet.getMacronutrients()
+                .plus(mealMacronutrients));
 
         mealRepository.save(meal);
         mealFoodRepository.saveAll(mealFoods);
         mealDishRepository.saveAll(mealDishes);
     }
-
-    // private User getUserById(UUID userId) {
-    // Optional<User> userOptional = userRepository.findById(userId);
-    //
-    // if (!userOptional.isPresent())
-    // throw new UserNotFoundException();
-    //
-    // return userOptional.get();
-    // }
 
     private Diet getDietById(UUID dietId) {
         Optional<Diet> dietOptional = dietRepository.findById(dietId);
@@ -135,38 +130,4 @@ public class MealService {
         return dietDishes;
     }
 
-    // public List<DietDTO> listDietsByUserId(UUID userId) {
-    // User user = getUserById(userId);
-    //
-    // List<Diet> unmappedUserDiets = dietRepository.findAllByUser(user);
-    // List<DietDTO> mappedUserDiets =
-    // unmappedUserDiets.stream().map(DietDTO::new).toList();
-    //
-    // return mappedUserDiets;
-    // }
-
-    // public FullMealDTO getMealById(UUID mealId) {
-    // Optional<Meal> mealOptional = mealRepository.findById(mealId);
-    //
-    // if (!mealOptional.isPresent())
-    // throw new DietNotFoundException();
-    //
-    // Meal meal = mealOptional.get();
-    //
-    // List<MealDish> unmappedDishes = mealDishRepository.findAllByMeal(meal);
-    // List<DietDishDTO> dishes = unmappedDishes
-    // .stream()
-    // .map(DietDishDTO::new)
-    // .toList();
-    //
-    // List<MealFood> unmappedFoods = mealFoodRepository.findAllByMeal(meal);
-    // List<DietFoodDTO> foods = unmappedFoods
-    // .stream()
-    // .map(DietFoodDTO::new)
-    // .toList();
-    //
-    // FullMealDTO mappedMeal = new FullMealDTO(meal, dishes, foods);
-    //
-    // return mappedMeal;
-    // }
 }

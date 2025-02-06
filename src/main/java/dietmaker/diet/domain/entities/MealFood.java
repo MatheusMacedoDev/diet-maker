@@ -14,15 +14,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "diet_foods")
+@Table(name = "meal_foods")
 @NoArgsConstructor
 @Getter
 public class MealFood {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "diet_food_id")
-    private UUID dietFoodId;
+    @Column(name = "meal_food_id")
+    private UUID mealFoodId;
 
     @ManyToOne
     @JoinColumn(name = "meal_id")
