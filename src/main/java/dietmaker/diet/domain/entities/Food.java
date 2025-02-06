@@ -33,6 +33,7 @@ public class Food {
         @AttributeOverride(name = "carbohydrates", column = @Column(name = "food_carbohydrates")),
         @AttributeOverride(name = "protein", column = @Column(name = "food_protein")),
         @AttributeOverride(name = "lipids", column = @Column(name = "food_lipids")),
+        @AttributeOverride(name = "fibers", column = @Column(name = "food_fibers")),
         @AttributeOverride(name = "kcal", column = @Column(name = "food_kcal"))
     })
     private Macronutrients macronutrients;
@@ -43,6 +44,7 @@ public class Food {
         this.macronutrients = new Macronutrients(
             request.carbohydrates(),
             request.protein(),
-            request.lipids());
+            request.lipids(),
+            request.fibers());
     }
 }

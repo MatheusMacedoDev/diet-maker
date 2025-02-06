@@ -38,13 +38,14 @@ public class Dish {
         @AttributeOverride(name = "carbohydrates", column = @Column(name = "dish_carbohydrates")),
         @AttributeOverride(name = "protein", column = @Column(name = "dish_protein")),
         @AttributeOverride(name = "lipids", column = @Column(name = "dish_lipids")),
+        @AttributeOverride(name = "fibers", column = @Column(name = "dish_fibers")),
         @AttributeOverride(name = "kcal", column = @Column(name = "dish_kcal"))
     })
     private Macronutrients macronutrients;
 
     public Dish(String dishName) {
         this.dishName = dishName;
-        this.macronutrients = new Macronutrients(0, 0, 0);
+        this.macronutrients = new Macronutrients(0, 0, 0, 0);
     }
 
     public void setMacronutrients(Macronutrients macronutrients) {

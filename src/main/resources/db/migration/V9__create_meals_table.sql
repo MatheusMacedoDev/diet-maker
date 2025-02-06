@@ -5,6 +5,7 @@ CREATE TABLE meals (
     meal_carbohydrates NUMERIC(6,1) NOT NULL,
     meal_protein NUMERIC(6,1) NOT NULL,
     meal_lipids NUMERIC(6,1) NOT NULL,
+    meal_fibers NUMERIC(6,1) NOT NULL,
     meal_kcal NUMERIC(7,1) NOT NULL,
     meal_time TIME NOT NULL,
     CONSTRAINT fk_diet

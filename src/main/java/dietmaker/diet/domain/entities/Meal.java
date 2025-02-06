@@ -43,6 +43,7 @@ public class Meal {
         @AttributeOverride(name = "carbohydrates", column = @Column(name = "meal_carbohydrates")),
         @AttributeOverride(name = "protein", column = @Column(name = "meal_protein")),
         @AttributeOverride(name = "lipids", column = @Column(name = "meal_lipids")),
+        @AttributeOverride(name = "fibers", column = @Column(name = "meal_fibers")),
         @AttributeOverride(name = "kcal", column = @Column(name = "meal_kcal"))
     })
     private Macronutrients macronutrients;
@@ -59,7 +60,7 @@ public class Meal {
     public Meal(String mealName, Diet diet) {
         this.mealName = mealName;
         this.diet = diet;
-        this.macronutrients = new Macronutrients(0, 0, 0);
+        this.macronutrients = new Macronutrients(0, 0, 0, 0);
     }
 
     public void setMacronutrients(Macronutrients macronutrients) {

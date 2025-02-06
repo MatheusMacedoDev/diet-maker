@@ -4,5 +4,6 @@ CREATE TABLE foods (
     food_carbohydrates NUMERIC(4,3) NOT NULL,
     food_protein NUMERIC(4,3) NOT NULL,
     food_lipids NUMERIC(4,3) NOT NULL,
+    food_fibers NUMERIC(4,3) NOT NULL,
     food_kcal NUMERIC(4,3) NOT NULL
 );

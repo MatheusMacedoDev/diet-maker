@@ -38,9 +38,10 @@ public class DishService {
         byte dishFoodsQuantity = (byte) dishRequest.dishFoods().length;
         List<DishFood> dishFoods = new ArrayList<DishFood>();
 
-        short dishCarbohydrates = 0;
-        short dishProtein = 0;
-        short dishLipids = 0;
+        double dishCarbohydrates = 0;
+        double dishProtein = 0;
+        double dishLipids = 0;
+        double dishFibers = 0;
 
         for (byte dishFoodIndex = 0; dishFoodIndex < dishFoodsQuantity; dishFoodIndex++) {
             var unmappedDishFood = dishRequest.dishFoods()[dishFoodIndex];
@@ -57,13 +58,14 @@ public class DishService {
             dishCarbohydrates += food.getMacronutrients().getCarbohydrates() * foodGrams;
             dishProtein += food.getMacronutrients().getProtein() * foodGrams;
             dishLipids += food.getMacronutrients().getLipids() * foodGrams;
+            dishFibers += food.getMacronutrients().getFibers() * foodGrams;
 
             var mappedDishFood = new DishFood(dish, food, foodGrams);
 
             dishFoods.add(mappedDishFood);
         }
 
-        dish.setMacronutrients(new Macronutrients(dishCarbohydrates, dishProtein, dishLipids));
+        dish.setMacronutrients(new Macronutrients(dishCarbohydrates, dishProtein, dishLipids, dishFibers));
 
         dishRepository.save(dish);
         dishFoodRepository.saveAll(dishFoods);

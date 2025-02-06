@@ -36,7 +36,7 @@ public class DietService {
     @Transactional
     public void createDiet(DietRequestDTO dietRequest) {
         User user = getUserById(dietRequest.userId());
-        Diet diet = new Diet(dietRequest.dietName(), user);
+        Diet diet = new Diet(dietRequest.dietName(), user, dietRequest.dietWaterMl());
 
         dietRepository.save(diet);
     }
