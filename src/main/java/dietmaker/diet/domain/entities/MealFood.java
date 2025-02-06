@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "diet_foods")
 @NoArgsConstructor
 @Getter
-public class DietFood {
+public class MealFood {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,8 +25,8 @@ public class DietFood {
     private UUID dietFoodId;
 
     @ManyToOne
-    @JoinColumn(name = "diet_id")
-    private Diet diet;
+    @JoinColumn(name = "meal_id")
+    private Meal meal;
 
     @ManyToOne
     @JoinColumn(name = "food_id")
@@ -35,8 +35,8 @@ public class DietFood {
     @Column(name = "grams_quantity")
     private short gramsQuantity;
 
-    public DietFood(Diet diet, Food food, short gramsQuantity) {
-        this.diet = diet;
+    public MealFood(Meal meal, Food food, short gramsQuantity) {
+        this.meal = meal;
         this.food = food;
         this.gramsQuantity = gramsQuantity;
     }

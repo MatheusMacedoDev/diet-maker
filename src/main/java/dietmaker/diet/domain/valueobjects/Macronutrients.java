@@ -2,8 +2,8 @@ package dietmaker.diet.domain.valueobjects;
 
 import java.util.List;
 
-import dietmaker.diet.domain.entities.DietDish;
-import dietmaker.diet.domain.entities.DietFood;
+import dietmaker.diet.domain.entities.MealDish;
+import dietmaker.diet.domain.entities.MealFood;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,18 +40,18 @@ public class Macronutrients extends ValueObject {
         return new Object[] { carbohydrates, protein, lipids, kcal };
     }
 
-    public static Macronutrients calculateDietMacronutrients(List<DietFood> foods, List<DietDish> dishes) {
+    public static Macronutrients calculateDietMacronutrients(List<MealFood> foods, List<MealDish> dishes) {
         short carbohydrates = 0;
         short protein = 0;
         short lipids = 0;
 
-        for (DietFood food : foods) {
+        for (MealFood food : foods) {
             carbohydrates += food.getFood().getMacronutrients().carbohydrates * food.getGramsQuantity();
             protein += food.getFood().getMacronutrients().protein * food.getGramsQuantity();
             lipids += food.getFood().getMacronutrients().lipids * food.getGramsQuantity();
         }
 
-        for (DietDish dish : dishes) {
+        for (MealDish dish : dishes) {
             carbohydrates += dish.getDish().getMacronutrients().carbohydrates * dish.getMultiplier();
             protein += dish.getDish().getMacronutrients().protein * dish.getMultiplier();
             lipids += dish.getDish().getMacronutrients().lipids * dish.getMultiplier();
