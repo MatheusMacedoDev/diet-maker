@@ -7,6 +7,7 @@ class Nutrient:
     lipids: float
     protein: float
     carbohydrates: float
+    fibers: float
 
 
 @dataclass
@@ -46,6 +47,7 @@ def map_foods_response(foods_json):
                 protein=food["nutrients"]["protein"],
                 carbohydrates=food["nutrients"]["carbohydrates"],
                 lipids=food["nutrients"]["lipids"],
+                fibers=food["nutrients"]["dietaryFiber"],
             ),
             name=food["name"],
         )
@@ -57,10 +59,11 @@ query = """
     query MyQuery {
         getAllFood {
             nutrients {
-            lipids
-            protein
-            carbohydrates
-        }
+                lipids
+                protein
+                carbohydrates
+                dietaryFiber
+            }
         name
     }
 }
@@ -84,6 +87,9 @@ for food in foods:
     if food.nutrients.protein is None:
         food.nutrients.protein = 0
 
+    if food.nutrients.fibers is None:
+        food.nutrients.fibers = 0
+
     make_post(
         "http://localhost:8080/foods",
         {
@@ -91,6 +97,7 @@ for food in foods:
             "carbohydrates": round(food.nutrients.carbohydrates / 100, 3),
             "protein": round(food.nutrients.protein / 100, 3),
             "lipids": round(food.nutrients.lipids / 100, 3),
+            "fibers": round(food.nutrients.fibers / 100, 3),
         },
     )
 
