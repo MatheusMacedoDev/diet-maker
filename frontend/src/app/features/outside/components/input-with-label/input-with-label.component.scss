@@ -1,0 +1,32 @@
+@use "../../../../../colors";
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-label {
+  color: colors.$brown-1;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.input-content {
+  width: 553px;
+  height: 66px;
+
+  border-radius: 12px;
+  border: none;
+
+  padding: 0 22px;
+  outline: none;
+
+  font-size: 1.25rem;
+  color: colors.$brown-1;
+}
+
+.input-content::placeholder {
+  color: colors.$brown-3;
+  font-size: 1.25rem;
+}
