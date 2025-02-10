@@ -1,0 +1,33 @@
+@use '../../../../../colors';
+
+.orange-button {
+  width: 553px;
+  height: 66px;
+
+  background-image: linear-gradient(colors.$orange-4, colors.$orange-3);
+  color: colors.$white-3;
+
+  font-weight: bold;
+  font-size: 1.25rem;
+
+  border-radius: 12px;
+  outline: none;
+  border: none;
+
+  cursor: pointer;
+
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.orange-button:hover {
+  background-image: linear-gradient(colors.$orange-3, colors.$orange-2);
+
+  scale: 1.05;
+}
+
+.orange-button:active {
+  background-image: linear-gradient(colors.$orange-2, colors.$orange-1);
+
+  scale: 0.95;
+}

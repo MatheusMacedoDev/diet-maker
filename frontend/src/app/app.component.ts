@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { InputWithLabelComponent } from './features/outside/components/input-with-label/input-with-label.component';
+import { OrangeButtonComponent } from './features/outside/components/orange-button/orange-button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, InputWithLabelComponent],
+  imports: [RouterOutlet, OrangeButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
