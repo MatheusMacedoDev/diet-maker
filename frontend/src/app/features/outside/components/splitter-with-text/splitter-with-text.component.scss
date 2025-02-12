@@ -1,0 +1,16 @@
+@use '../../../../../colors';
+
+.splitter-wrapper {
+  min-width: 553px;
+  max-width: 553px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.splitter-line {
+  flex: 1;
+  height: 1px;
+
+  background-color: colors.$brown-1;
+}

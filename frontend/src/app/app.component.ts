@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GoogleButtonComponent } from './features/outside/components/google-button/google-button.component';
+import { SplitterWithTextComponent } from './features/outside/components/splitter-with-text/splitter-with-text.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, GoogleButtonComponent],
+  imports: [RouterOutlet, SplitterWithTextComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
