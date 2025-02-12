@@ -1,0 +1,46 @@
+@use '../../../../../colors';
+
+.google-button {
+  width: 553px;
+  height: 66px;
+
+  display: flex;
+  gap: 10px;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  color: colors.$orange-4;
+
+  font-weight: bold;
+  font-size: 1.25rem;
+
+  border-radius: 12px;
+  outline: none;
+  border: 2px solid colors.$orange-4;
+
+  margin-top: 10px;
+
+  cursor: pointer;
+
+  transition: all;
+  transition-duration: 100ms;
+}
+
+.google-button:hover {
+  box-shadow: 0 2px 4px rgba(240, 77, 36, 0.25);
+  background-color: colors.$white-3;
+
+  scale: 1.05;
+}
+
+.google-button:active {
+  background-color: colors.$white-2;
+
+  scale: 0.95;
+}
+
+.google-icon {
+  font-size: 1.5rem;
+}

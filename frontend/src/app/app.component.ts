@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { OrangeButtonComponent } from './features/outside/components/orange-button/orange-button.component';
+import { GoogleButtonComponent } from './features/outside/components/google-button/google-button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, OrangeButtonComponent],
+  imports: [RouterOutlet, GoogleButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
