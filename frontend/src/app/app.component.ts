@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SplitterWithTextComponent } from './features/outside/components/splitter-with-text/splitter-with-text.component';
+import { InsideHeaderComponent } from './features/inside/components/inside-header/inside-header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SplitterWithTextComponent],
+  imports: [RouterOutlet, InsideHeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -1,0 +1,77 @@
+@use '../../../../../colors';
+
+.inside-header {
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10vw;
+
+  background-color: colors.$white-3;
+  border-radius: 0 0 10px 10px;
+}
+
+.left-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10vw;
+}
+
+.right-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 2%;
+}
+
+.header-navigator {
+  display: flex;
+  gap: 5vw;
+
+}
+
+.navigation-item {
+  color: colors.$brown-3;
+  text-decoration: none;
+
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navigation-item:hover {
+  color: colors.$orange-4;
+}
+
+.navigation-item:active {
+  color: colors.$orange-3;
+}
+
+.greetment-text {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.highlighted-text {
+  color: colors.$orange-4;
+}
+
+.user-background-circle {
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: colors.$brown-1;
+  border-radius: 99999px;
+}
+
+.user-icon {
+  color: colors.$white-3;
+  font-size: 24px;
+}
