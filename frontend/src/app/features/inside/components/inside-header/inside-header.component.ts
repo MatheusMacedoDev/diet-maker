@@ -1,7 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'inside-header',
@@ -11,5 +11,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class InsideHeaderComponent {
   faUser = faUser;
+  faBars = faBars;
+
   nutflyImageUri = 'nutfly-logo.png';
 }

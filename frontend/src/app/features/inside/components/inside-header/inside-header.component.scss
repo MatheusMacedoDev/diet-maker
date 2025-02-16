@@ -1,4 +1,5 @@
 @use '../../../../../colors';
+@use '../../../../../configs';
 
 .inside-header {
   height: 80px;
@@ -25,7 +26,7 @@
   justify-content: flex-end;
   align-items: center;
 
-  gap: 2%;
+  gap: 1vw;
 }
 
 .header-navigator {
@@ -74,4 +75,67 @@
 .user-icon {
   color: colors.$white-3;
   font-size: 24px;
+}
+
+.menu-button {
+  display: none;
+}
+
+
+@media (max-width: configs.$big-screen) {
+
+  .inside-header,
+  .left-wrapper {
+    gap: 5vw;
+  }
+
+  .logo {
+    width: 130px;
+    height: auto;
+  }
+
+  .navigation-item {
+    font-size: 18px;
+  }
+
+  .header-navigator {
+    gap: 4vw;
+  }
+
+  .greetment-text {
+    font-size: 20px;
+  }
+
+  .user-background-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .user-icon {
+    font-size: 18px;
+  }
+
+}
+
+
+@media (max-width: configs.$tablet-screen) {
+
+  .header-navigator,
+  .greetment-text,
+  .user-background-circle {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    font-size: 24px;
+    color: colors.$orange-3;
+  }
+
 }
