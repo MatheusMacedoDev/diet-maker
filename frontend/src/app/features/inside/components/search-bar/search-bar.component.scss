@@ -1,0 +1,35 @@
+@use '../../../../../colors';
+
+.search-bar-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  height: 66px;
+
+
+  background-color: colors.$white-3;
+
+  border-radius: 36px;
+  border: none;
+
+  padding: 18px 30px;
+
+  font-size: 20px;
+  color: colors.$brown-1;
+}
+
+.search-input:focus {
+  outline: 2px solid colors.$orange-4;
+}
+
+.search-icon {
+  position: absolute;
+  top: calc(50% - 18px);
+  right: 30px;
+
+  font-size: 24px;
+  color: colors.$brown-1;
+}
