@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SearchBarComponent } from './features/inside/components/search-bar/search-bar.component';
+import { FoodIndicatorsViewComponent } from './features/inside/components/food-indicators-view/food-indicators-view.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SearchBarComponent],
+  imports: [RouterOutlet, FoodIndicatorsViewComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

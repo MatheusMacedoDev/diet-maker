@@ -1,0 +1,30 @@
+<div class="food-indicators-wrapper">
+  <span class="indicator">
+    <fa-icon class="kcal-icon" [icon]="faFire" />
+    {{kcal()}}
+  </span>
+  <div class="macronutrients-group">
+    <span class="indicator">
+      <fa-icon class="carbohydrates-icon" [icon]="faBreadSlice" />
+      {{carbohydrates()}}
+    </span>
+    <span class="indicator">
+      <fa-icon class="proteins-icon" [icon]="faDrumstickBite" />
+      {{proteins()}}
+    </span>
+    <span class="indicator">
+      <fa-icon class="lipids-icon" [icon]="faCheese" />
+      {{lipids()}}
+    </span>
+  </div>
+  <div class="extras-group">
+    <span class="indicator">
+      <fa-icon class="water-icon" [icon]="faGlassWater" />
+      {{water()}}
+    </span>
+    <span class="indicator">
+      <fa-icon class="fibers-icon" [icon]="faLeaf" />
+      {{fibers()}}
+    </span>
+  </div>
+</div>

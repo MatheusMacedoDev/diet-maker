@@ -1,0 +1,56 @@
+@use '../../../../../colors';
+
+.food-indicators-wrapper {
+  display: flex;
+  gap: 102px;
+  font-size: 24px;
+}
+
+.macronutrients-group {
+  display: flex;
+  gap: 38px;
+}
+
+.extras-group {
+  display: flex;
+  gap: 38px;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kcal-icon,
+.carbohydrates-icon,
+.proteins-icon,
+.lipids-icon,
+.water-icon,
+.fibers-icon {
+  font-size: 32px;
+}
+
+.kcal-icon {
+  color: colors.$orange-4;
+}
+
+.carbohydrates-icon {
+  color: colors.$brown-7;
+}
+
+.proteins-icon {
+  color: colors.$wine-1;
+}
+
+.lipids-icon {
+  color: colors.$yellow-1;
+}
+
+.water-icon {
+  color: colors.$blue-1;
+}
+
+.fibers-icon {
+  color: colors.$brown-7;
+}
