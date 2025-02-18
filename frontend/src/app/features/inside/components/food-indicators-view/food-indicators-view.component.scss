@@ -6,28 +6,59 @@
   font-size: 24px;
 }
 
+.food-indicators-wrapper-small {
+  gap: 64px;
+  font-size: 16px;
+}
+
+.food-indicators-wrapper-medium {
+  gap: 80px;
+  font-size: 20px;
+}
+
+.food-indicators-wrapper-big {
+  gap: 102px;
+  font-size: 24px;
+}
+
 .macronutrients-group {
   display: flex;
-  gap: 38px;
 }
 
 .extras-group {
   display: flex;
+}
+
+.group-small {
+  gap: 32px;
+}
+
+.group-big {
   gap: 38px;
 }
 
 .indicator {
   display: flex;
   align-items: center;
+}
+
+.indicator-small {
+  gap: 8px;
+}
+
+.indicator-big {
   gap: 10px;
 }
 
-.kcal-icon,
-.carbohydrates-icon,
-.proteins-icon,
-.lipids-icon,
-.water-icon,
-.fibers-icon {
+.icon-small {
+  font-size: 20px;
+}
+
+.icon-medium {
+  font-size: 26px;
+}
+
+.icon-big {
   font-size: 32px;
 }
 

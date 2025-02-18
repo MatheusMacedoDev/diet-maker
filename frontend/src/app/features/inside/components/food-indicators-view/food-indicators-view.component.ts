@@ -16,6 +16,8 @@ export class FoodIndicatorsViewComponent {
   water = input.required<Number>();
   fibers = input.required<Number>();
 
+  size = input.required<'small' | 'medium' | 'big'>();
+
   faFire = faFire;
   faBreadSlice = faBreadSlice;
   faDrumstickBite = faDrumstickBite;

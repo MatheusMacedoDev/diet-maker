@@ -1,29 +1,44 @@
-<div class="food-indicators-wrapper">
-  <span class="indicator">
-    <fa-icon class="kcal-icon" [icon]="faFire" />
+<div class="food-indicators-wrapper" [class.food-indicators-wrapper-small]="size() === 'small'"
+  [class.food-indicators-wrapper-medium]="size() === 'medium'" [class.food-indicators-wrapper-big]="size() === 'big'">
+  <span class="indicator" [class.indicator-small]="size() === 'small' || size() === 'medium'"
+    [class.indicator-big]="size() === 'big'">
+    <fa-icon class="kcal-icon" [icon]="faFire" [class.icon-small]="size() === 'small'"
+      [class.icon-medium]="size() === 'medium'" [class.icon-big]="size() === 'big'" />
     {{kcal()}}
   </span>
-  <div class="macronutrients-group">
-    <span class="indicator">
-      <fa-icon class="carbohydrates-icon" [icon]="faBreadSlice" />
+  <div class="macronutrients-group" [class.group-small]="size() === 'small' || size() === 'medium'"
+    [class.group-big]="size() === 'big'">
+    <span class="indicator" [class.indicator-small]="size() === 'small' || size() === 'medium'"
+      [class.indicator-big]="size() === 'big'">
+      <fa-icon class="carbohydrates-icon" [icon]="faBreadSlice" [class.icon-small]="size() === 'small'"
+        [class.icon-medium]="size() === 'medium'" [class.icon-big]="size() === 'big'" />
       {{carbohydrates()}}
     </span>
-    <span class="indicator">
-      <fa-icon class="proteins-icon" [icon]="faDrumstickBite" />
+    <span class="indicator" [class.indicator-small]="size() === 'small' || size() === 'medium'"
+      [class.indicator-big]="size() === 'big'">
+      <fa-icon class="proteins-icon" [icon]="faDrumstickBite" [class.icon-small]="size() === 'small'"
+        [class.icon-medium]="size() === 'medium'" [class.icon-big]="size() === 'big'" />
       {{proteins()}}
     </span>
-    <span class="indicator">
-      <fa-icon class="lipids-icon" [icon]="faCheese" />
+    <span class="indicator" [class.indicator-small]="size() === 'small' || size() === 'medium'"
+      [class.indicator-big]="size() === 'big'">
+      <fa-icon class="lipids-icon" [icon]="faCheese" [class.icon-small]="size() === 'small'"
+        [class.icon-medium]="size() === 'medium'" [class.icon-big]="size() === 'big'" />
       {{lipids()}}
     </span>
   </div>
-  <div class="extras-group">
-    <span class="indicator">
-      <fa-icon class="water-icon" [icon]="faGlassWater" />
+  <div class="extras-group" [class.group-small]="size() === 'small' || size() === 'medium'"
+    [class.group-big]="size() === 'big'">
+    <span class="indicator" [class.indicator-small]="size() === 'small' || size() === 'medium'"
+      [class.indicator-big]="size() === 'big'">
+      <fa-icon class="water-icon" [icon]="faGlassWater" [class.icon-small]="size() === 'small'"
+        [class.icon-medium]="size() === 'medium'" [class.icon-big]="size() === 'big'" />
       {{water()}}
     </span>
-    <span class="indicator">
-      <fa-icon class="fibers-icon" [icon]="faLeaf" />
+    <span class="indicator" [class.indicator-small]="size() === 'small' || size() === 'medium'"
+      [class.indicator-big]="size() === 'big'">
+      <fa-icon class="fibers-icon" [icon]="faLeaf" [class.icon-small]="size() === 'small'"
+        [class.icon-medium]="size() === 'medium'" [class.icon-big]="size() === 'big'" />
       {{fibers()}}
     </span>
   </div>
